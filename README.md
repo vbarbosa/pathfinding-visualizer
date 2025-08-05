@@ -1,3 +1,4 @@
+
 # 🧭 Pathfinding Visualizer
 
 Um visualizador interativo de algoritmos de busca em grafos (Dijkstra e A*) com interface gráfica feita em **Pygame**.  
