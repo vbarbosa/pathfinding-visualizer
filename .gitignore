@@ -1,0 +1,56 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Caches do pytest
+.pytest_cache/
+
+# Arquivos de log
+logs/
+*.log
+
+# Arquivos de configuração do Tkinter (caso existam)
+*.tcl
+
+# Arquivos de ambiente virtual
+env/
+venv/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDEs e editores
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Arquivos temporários e de backup
+*.swp
+*.bak
+*.tmp
+*.~ 
+.DS_Store
+Thumbs.db
+
+# Arquivos exportados
+*.png
+*.json
+
+# Arquivos de testes
+coverage.xml
+htmlcov/
+*.cover
+*.py,cover
+
+# Arquivos de pacotes Python
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Arquivos do repositório de pacotes
+pip-wheel-metadata/
