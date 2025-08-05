@@ -54,3 +54,5 @@ build/
 
 # Arquivos do repositório de pacotes
 pip-wheel-metadata/
+
+main.spec

@@ -1,7 +1,13 @@
 import json
 import os
+import sys
 from grid.grid_builder import make_grid
 from config import ROWS
+
+def resource_path(relative_path):
+    """Resolve o caminho do arquivo, compatível com PyInstaller."""
+    base_path = getattr(sys, '_MEIPASS', os.path.abspath("."))
+    return os.path.join(base_path, relative_path)
 
 def save_map(grid, start, end, path="saved_map.json"):
     """Salva o mapa atual em um arquivo JSON."""
@@ -12,24 +18,24 @@ def save_map(grid, start, end, path="saved_map.json"):
     }
 
     try:
-        with open(path, "w") as f:
+        with open(os.path.join(os.getcwd(), path), "w") as f:
             json.dump(data, f)
     except Exception as e:
         print(f"Erro ao salvar mapa: {e}")
 
 def load_map(path="saved_map.json"):
     """Carrega um mapa salvo e retorna (grid, start, end)."""
-    if not os.path.exists(path):
+    full_path = resource_path(path)
+    if not os.path.exists(full_path):
         raise FileNotFoundError(f"Arquivo não encontrado: {path}")
 
     try:
-        with open(path, "r") as f:
+        with open(full_path, "r") as f:
             data = json.load(f)
 
         grid = make_grid()
         start = end = None
 
-        # Converte paredes para tuplas
         wall_positions = set(map(tuple, data.get("walls", [])))
         start_pos = tuple(data.get("start")) if data.get("start") else None
         end_pos = tuple(data.get("end")) if data.get("end") else None
@@ -60,7 +66,6 @@ def load_dummy_map():
     start.make_start()
     end.make_end()
 
-    # Obstáculo vertical entre linhas 10-19 na coluna 15
     for i in range(10, 20):
         grid[i][15].make_wall()
 
